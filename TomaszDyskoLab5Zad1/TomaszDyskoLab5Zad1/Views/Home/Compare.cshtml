@@ -1,0 +1,44 @@
+﻿@model IEnumerable<TomaszDyskoLab5Zad1.Models.Game>
+
+@{
+    ViewBag.Title = "Compare";
+}
+
+<h2>Porównaj</h2>
+<!--lista wyświetlająca gry-->
+<p>
+    @Html.ActionLink("Dodaj nową grę", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Producer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Producer)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            <!--link do rencenzji tej gry-->
+            @Html.ActionLink("Recenzje tej gry", "Reviews","Home", new { a = item.Id }, null)
+        </td>
+    </tr>
+}
+
+</table>
